@@ -183,6 +183,13 @@ const focusState = createSelector(
 );
 
 /**
+ * Are there currently any active (applied) filters?
+ */
+function hasAppliedFilter(state) {
+  return !!state.query || state.focus?.active;
+}
+
+/**
  * Retrieve any applied user filter
  * @type {(state: any) => string|null}
  */
@@ -201,6 +208,7 @@ function userFilter(state) {
  * // Selectors
  * @prop {() => string|null} filterQuery
  * @prop {() => FocusState} focusState
+ * @prop {() => boolean} hasAppliedFilter
  * @prop {() => string|null} userFilter
  *
  */
@@ -217,6 +225,7 @@ export default {
   selectors: {
     filterQuery,
     focusState,
+    hasAppliedFilter,
     userFilter,
   },
 };
